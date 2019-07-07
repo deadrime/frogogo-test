@@ -1,0 +1,31 @@
+@import '../../variables'
+
+.accountCart
+  display flex
+  cursor pointer
+  &:hover
+    .cartText
+      color: $color-primary
+
+.card
+  display block
+  position relative
+
+.cartText
+  transition: color .3s
+  padding-left 1rem
+  color: $color-dark-grey
+
+.cardBadge
+  padding: .1rem .45rem;
+  font-size: 600;
+  position: absolute;
+  background-color: #fe7575;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: .6rem;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -0.7em);

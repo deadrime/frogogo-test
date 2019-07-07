@@ -11,23 +11,29 @@
 
 .topNav
   display flex
+  margin-bottom: 1.5rem;
 
 .mainNavWrapper
   display flex
+  justify-content: space-between
+  align-items: center;
 
 .navItem
   font-size: 1.15rem
-  color: #8795a1
+  color: $color-dark-grey
   text-decoration: none
   transition: color .3s
   &:not(:last-child)
-    margin-right: 1.25rem;
+    margin-right: 1.5rem;
   &:hover
     color: #4ad9bd;
 
+.navItemIcon
+  padding-left .5rem
+
 .mainNav
-  margin-left auto
   display flex
+  align-items: center
 
 .account
   margin-left auto
