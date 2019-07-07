@@ -3,12 +3,13 @@
 .accountCart
   display flex
   cursor pointer
+  text-decoration: none;
   padding-top: .5rem
   &:hover
     .cartText
       color: $color-primary
 
-.card
+.cart
   display block
   position relative
 
@@ -18,11 +19,11 @@
   padding-left 1rem
   color: $color-dark-grey
 
-.cardBadge
+.cartBadge
   padding: .085rem .3rem;
   font-size: 600;
   position: absolute;
-  background-color: #fe7575;
+  background-color: $color-red;
   color: #fff;
   font-size: .75rem;
   font-weight: 600;
