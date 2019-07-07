@@ -1,11 +1,11 @@
 import { createElement as $ } from 'react'
-import Card from '@/components/Card'
+import Cart from '@/components/Cart'
 import Header from '@/components/Header'
+import { CartStore } from '@/store/cartStore'
 
 const App = () => 
-  $('div', null, 
+  $(CartStore, null, 
     $(Header),
-    $(Card)
-  )
+    $(Cart))
 
 export default App
