@@ -1,0 +1,1 @@
+export const formatMoney = num => `${Number(num).toLocaleString()} ₽`

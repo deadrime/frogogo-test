@@ -14,7 +14,7 @@ const initialState = {
       id: 2,
       title: 'Очки солнцезащитные спортивные антибликовые с поляризацией',
       quantity: 1,
-      // image: require('../assets/images/img-product-cart-06@2x.jpg'),
+      image: require('../assets/images/img-product-cart-06@2x.jpg'),
     }
   ],
   cartItems: [
@@ -26,7 +26,7 @@ const initialState = {
       minDiscount: 2000,
       maxDiscount: 2000,
       quantity: 2,
-      // image: require('../assets/images/img-product-cart-01@2x.jpg'),
+      image: require('../assets/images/img-product-cart-01@2x.jpg'),
     },
     {
       id: 1,
@@ -36,7 +36,7 @@ const initialState = {
       minDiscount: 0,
       maxDiscount: 1000,
       quantity: 1,
-      // image: require('../assets/images/img-product-cart-02@2x.jpg'),
+      image: require('../assets/images/img-product-cart-02@2x.jpg'),
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ const initialState = {
       minDiscount: 0,
       maxDiscount: 2500,
       quantity: 1,
-      // image: require('../assets/images/img-product-cart-05@2x.jpg'),
+      image: require('../assets/images/img-product-cart-05@2x.jpg'),
     },
   ],
 }
@@ -53,20 +53,37 @@ const initialState = {
 export const CartStore = ({ children }) => {
   const [store, setStore] = useState(initialState)
 
-  const setStoreItem = (type, value) => 
+  const setStoreItem = (type, value) =>
     setStore(prev => ({
       ...prev,
       [type]: value,
     }))
 
-  return $(CartContext.Provider, { 
+  const deleteCartItem = (id) =>
+    setStore(prev => ({
+      ...prev,
+      cartItems: prev.cartItems.filter(i => i.id !== id),
+    }))
+
+  const changeItemQuantity = (id, value) =>
+    setStore(prev => {
+      const item = prev.cartItems.find(i => i.id === id)
+      item.quantity += value
+      if (item.quantity === 0) deleteCartItem(id)
+
+      return ({ ...prev })
+    })
+
+  return $(CartContext.Provider, {
     value: {
       ...store,
       setStoreItem,
+      deleteCartItem,
+      changeItemQuantity,
     }
   }, children)
 }
 
-export const withCartStore = Component => props => 
-  $(CartContext.Consumer, null, 
+export const withCartStore = Component => props =>
+  $(CartContext.Consumer, null,
     store => $(Component, { ...props, store }))
