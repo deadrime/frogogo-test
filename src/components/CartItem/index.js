@@ -1,19 +1,9 @@
 import { createElement as $ } from 'react'
 import styles from './style.styl'
 import IconTrash from '@/assets/svg/icon-cart-trash.svg'
+import IconGold from '@/assets/svg/icon-gold.svg'
 import { formatMoney } from '@/helpers'
-
-const Quantity = ({ id, quantity, changeItemQuantity }) =>
-  $('div', { className: styles.itemQuantity },
-    $('button', {
-      className: styles.itemControl,
-      onClick: () => changeItemQuantity(id, -1)
-    }, '−'),
-    $('span', { className: styles.itemQuantityValue }, quantity),
-    $('button', {
-      className: styles.itemControl,
-      onClick: () => changeItemQuantity(id, 1),
-    }, '+'))
+import Quantity from '@/components/Quantity'
 
 const ItemColor = ({ color }) =>
   $('div', { className: styles.itemColorWrapper },
@@ -43,9 +33,15 @@ const ItemPrice = ({
     $('div', { className: styles.itemPriceWrapper },
       $('span', { className: styles.itemPriceLabel }, 'Можно оплатить с личного счёта '),
       $('span', { className: styles.itemPriceAmount }, formatMoney(maxDiscount * quantity))),
-    !!minDiscount && $('div', { className: styles.itemPriceWrapper },
+    minDiscount > 0 && $('div', { className: styles.itemPriceWrapper },
       $('span', { className: styles.itemPriceLabel }, 'Минимально к оплате с личного счета '),
       $('span', { className: styles.itemPriceAmount }, formatMoney(minDiscount))))
+
+const GiftText = () =>
+  $('div', { className: styles.gold },
+    $('span', null, 'Подарок от '),
+    $(IconGold),
+    $('span', { className: styles.goldLabel }, ' GOLD статуса'))
 
 const CartItem = ({
   id,
@@ -57,8 +53,9 @@ const CartItem = ({
   price,
   minDiscount,
   maxDiscount,
-  deleteCartItem,
-  changeItemQuantity,
+  onDelete,
+  onChangeQuantity,
+  isGift,
 }) =>
   $('div', { className: styles.item },
     $('header', { className: styles.itemHeader },
@@ -67,7 +64,7 @@ const CartItem = ({
         role: 'button',
         tabIndex: 0,
         className: styles.itemIcon,
-        onClick: () => deleteCartItem(id)
+        onClick: () => onDelete(id),
       })),
     $('div', { className: styles.itemContent },
       $('img', { src: image, className: styles.itemImage }),
@@ -75,12 +72,17 @@ const CartItem = ({
         $('div', { className: styles.itemSpecifications },
           color && $(ItemColor, { color }),
           size && $(ItemSize, { size })),
-        $(Quantity, { id, quantity, changeItemQuantity })),
-      $(ItemPrice, {
-        quantity,
-        price,
-        minDiscount,
-        maxDiscount,
-      })))
+        !isGift && $(Quantity, {
+          value: quantity,
+          onChange: value => onChangeQuantity(id, value)
+        })),
+      isGift
+        ? $(GiftText)
+        : $(ItemPrice, {
+          quantity,
+          price,
+          minDiscount,
+          maxDiscount,
+        })))
 
 export default CartItem
