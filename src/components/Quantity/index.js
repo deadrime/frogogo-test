@@ -7,11 +7,11 @@ const Quantity = ({ value, onChange, className }) =>
     $('button', {
       className: styles.itemControl,
       onClick: () => onChange(-1)
-    }, '−'),
+    }, $('span', null, '−')),
     $('span', { className: styles.itemQuantityValue }, value),
     $('button', {
       className: styles.itemControl,
       onClick: () => onChange(1),
-    }, '+'))
+    }, $('span', null, '+')))
 
 export default Quantity
