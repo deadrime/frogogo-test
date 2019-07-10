@@ -1,28 +1,30 @@
-@import '../../variables'
+@import '../../variables';
 
 .nav
-  display flex
-  flex 1
+  display: flex;
+  flex: 1;
 
 .navItems
   font-size: 1.15rem;
-  padding-top .5rem;
+  padding-top: .5rem;
 
 .navItem
-  color: $color-dark-grey
-  text-decoration: none
-  transition: color .3s
+  color: $color-dark-grey;
+  text-decoration: none;
+  transition: color .3s;
+
   &:not(:last-child)
     margin-right: 2.65rem;
+
   &:hover
     color: $color-primary;
 
 .navItemIcon
-  padding-left .5rem
+  padding-left: .5rem;
 
 .mobileMenuBtn
-  cursor pointer
-  display none
+  cursor: pointer;
+  display: none;
 
 .menuLine
   width: 2.2rem;
@@ -30,32 +32,37 @@
   background: $color-primary;
   border-radius: 4px;
   position: relative;
+
   &:before, &:after
-    content: "";
+    content: '';
     position: absolute;
     height: 3px;
     background: $color-primary;
     border-radius: 4px;
-    right : 0;
+    right: 0;
+
   &:before
-    width: 1.8rem
-    bottom: .5rem
+    width: 1.8rem;
+    bottom: .5rem;
+
   &:after
-    width: 1.3rem
-    top: .5rem
+    width: 1.3rem;
+    top: .5rem;
 
 .opened
   .menuLine
-    background: none
+    background: none;
+
     &:before, &:after
-      top 0
-      bottom 0
-      width 100%
+      top: 0;
+      bottom: 0;
+      width: 100%;
+
     &:before
-      transform: rotate(45deg)
-    &:after 
-      transform: rotate(-45deg)
-  
+      transform: rotate(45deg);
+
+    &:after
+      transform: rotate(-45deg);
 
 @media (max-width: 1000px)
   .navItem
@@ -64,35 +71,37 @@
 
 @media (max-width: 800px)
   .navItems
-    position: fixed
-    top 0
-    left 0
-    width 100%
-    height 100vh
-    flex-direction: column
-    padding: 20vh 2rem 2rem
-    box-sizing: border-box
-    font-size: 2rem
-    background: #fff
-    z-index 1
-    display none
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    padding: 20vh 2rem 2rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    background: #fff;
+    z-index: 1;
+    display: none;
+
     &.opened
-      display flex
+      display: flex;
 
   .navItem
-    margin-bottom 1rem
-  
+    margin-bottom: 1rem;
+
   .mobileMenuBtn
-    display flex
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: none
-    position relative
-    border: none
-    height 3.5rem
-    width 3.5rem
-    &.opened 
-      position fixed
-      z-index 2
+    background: none;
+    position: relative;
+    border: none;
+    height: 3.5rem;
+    width: 3.5rem;
+
+    &.opened
+      position: fixed;
+      z-index: 2;
       right: 2rem;
       top: 2rem;

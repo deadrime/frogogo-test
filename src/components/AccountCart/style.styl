@@ -1,23 +1,24 @@
-@import '../../variables'
+@import '../../variables';
 
 .accountCart
-  display flex
-  cursor pointer
+  display: flex;
+  cursor: pointer;
   text-decoration: none;
-  padding-top: .5rem
+  padding-top: .5rem;
+
   &:hover
     .cartText
-      color: $color-primary
+      color: $color-primary;
 
 .cart
-  display block
-  position relative
+  display: block;
+  position: relative;
 
 .cartText
-  transition: color .3s
-  padding-top .15rem
-  padding-left 1rem
-  color: $color-dark-grey
+  transition: color .3s;
+  padding-top: .15rem;
+  padding-left: 1rem;
+  color: $color-dark-grey;
 
 .cartBadge
   padding: .085rem .3rem;
@@ -31,4 +32,4 @@
   border-radius: .6rem;
   top: 0;
   right: 0;
-  transform: translate(50%, -0.7em);
+  transform: translate(50%, -.7em);

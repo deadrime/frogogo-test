@@ -1,45 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic');
 @import './variables';
 
-html, body {
+html, body
   min-height: 100%;
   margin: 0;
   padding: 0;
   font-size: 14px;
   font-family: Open Sans, -apple-system, sans-serif;
-}
 
-#app {
+#app
   height: 100%;
-  background: #f6f6f6;
+  background:#f6f6f6;
   overflow-x: hidden;
-}
 
-button:focus, a:focus, [role=button]:focus {
+button:focus, a:focus, [role=button]:focus
   outline-style: dotted;
   outline-width: 1px;
   outline-color: #c6cdd8;
-}
 
-:global {
-  .gold {
+:global
+  .gold
     color: $color-gold;
-  }
-  .green {
-    color: $color-primary
-  }
-  .dark-blue {
-    color: $color-dark-blue
-  }
-  .light-blue {
-    color: $color-light-blue
-  }
-}
 
+  .green
+    color: $color-primary;
 
-@media (max-width: 800px) {
-  html, body {
-    font-size: 12px
-  }
-}
+  .dark-blue
+    color: $color-dark-blue;
 
+  .light-blue
+    color: $color-light-blue;
+
+@media (max-width: 800px)
+  html, body
+    font-size: 12px;
