@@ -2,7 +2,7 @@ import { createElement as $, useState } from 'react'
 import { createContext } from 'react'
 import mockData from './mockData'
 
-export const CartContext = createContext({})
+export const CartContext = createContext(mockData)
 
 export const CartStore = ({ children }) => {
   const [store, setStore] = useState(mockData)
@@ -28,9 +28,31 @@ export const CartStore = ({ children }) => {
       return ({ ...prev })
     })
 
+  const clearCart = () => {
+    setStore(prev => ({
+      ...prev,
+      cartItems: [],
+      gift: null,
+    }))
+  }
+
+  const stats = {
+    totalAmount: 0, 
+    maxDiscount: 0
+  }
+  
+  store.cartItems
+    .reduce((acc, { price, quantity, maxDiscount }) => {
+      acc.totalAmount += price * quantity
+      acc.maxDiscount += maxDiscount * quantity
+      return acc
+    }, stats)
+
   return $(CartContext.Provider, {
     value: {
       ...store,
+      ...stats,
+      clearCart,
       setStoreItem,
       deleteCartItem,
       changeItemQuantity,
