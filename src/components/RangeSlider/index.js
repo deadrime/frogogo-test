@@ -18,7 +18,7 @@ const RangeSlider = ({
         $('span', { className: styles.amount }, formatMoney(min)),
         $('span', { className: styles.amount }, formatMoney(max))),
       $('input', {
-        style: { backgroundSize: `${percentage}%` },
+        style: { backgroundSize: `${percentage}% 100%` },
         className: styles.range,
         type: 'range',
         min,
