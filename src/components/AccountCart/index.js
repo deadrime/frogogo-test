@@ -6,7 +6,7 @@ import { withCartStore } from '@/store/cartStore'
 const AccountCart = ({ store: { cartItems } }) =>
   $('a', { href: '/', className: styles.accountCart },
     $('span', { className: styles.cart }, 
-      $('span', { className: styles.cartBadge}, $('span', null, cartItems.length)),
+      $('span', { className: styles.cartBadge}, $('span', null, cartItems.length )),
       $(CartIcon)),
     $('span', { className: styles.cartText }, 'Корзина'))
 

@@ -4,9 +4,10 @@ import IconTrash from '@/assets/svg/icon-cart-trash.svg'
 import IconGold from '@/assets/svg/icon-gold.svg'
 import { formatMoney } from '@/helpers'
 import Quantity from '@/components/Quantity'
+import cn from 'classnames'
 
-const ItemColor = ({ color }) =>
-  $('div', { className: styles.itemColorWrapper },
+const ItemColor = ({ color, className }) =>
+  $('div', { className: cn(styles.itemColorWrapper, className) },
     $('span', { className: styles.itemSpecificationsLabel }, 'Цвет'),
     $('div', {
       style: {
@@ -23,7 +24,6 @@ const ItemSize = ({ size }) =>
 const ItemPrice = ({
   quantity,
   price,
-  minDiscount,
   maxDiscount,
 }) =>
   $('div', { className: styles.itemPrice },
@@ -32,10 +32,7 @@ const ItemPrice = ({
       $('span', { className: styles.itemPriceFull }, formatMoney(price * quantity))),
     $('div', { className: styles.itemPriceWrapper },
       $('span', { className: styles.itemPriceLabel }, 'Можно оплатить с личного счёта '),
-      $('span', { className: styles.itemPriceAmount }, formatMoney(maxDiscount * quantity))),
-    minDiscount > 0 && $('div', { className: styles.itemPriceWrapper },
-      $('span', { className: styles.itemPriceLabel }, 'Минимально к оплате с личного счета '),
-      $('span', { className: styles.itemPriceAmount }, formatMoney(minDiscount))))
+      $('span', { className: styles.itemPriceAmount }, formatMoney(maxDiscount * quantity))))
 
 const GiftText = () =>
   $('div', { className: styles.gold },
@@ -73,6 +70,7 @@ const CartItem = ({
           color && $(ItemColor, { color }),
           size && $(ItemSize, { size })),
         !isGift && $(Quantity, {
+          className: styles.itemQuantity,
           value: quantity,
           onChange: value => onChangeQuantity(id, value)
         })),

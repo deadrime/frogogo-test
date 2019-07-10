@@ -3,8 +3,8 @@ import LocationIcon from '@/assets/svg/icon-location-header.svg'
 import ArrowDownIcon from '@/assets/svg/icon-header-arr-down.svg'
 import styles from './style.styl'
 
-const Location = () => 
-  $('div', null, 
+const Location = ({ className }) => 
+  $('div', { className }, 
     $(LocationIcon),
     $('span', { className: styles.locationText }, 'Регион: '),
     $('span', { className: styles.locationSelect, role: 'button', tabIndex: 0 }, 

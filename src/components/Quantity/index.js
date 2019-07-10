@@ -1,8 +1,9 @@
 import { createElement as $ } from 'react'
 import styles from './style.styl'
+import cn from 'classnames'
 
-const Quantity = ({ value, onChange }) =>
-  $('div', { className: styles.itemQuantity },
+const Quantity = ({ value, onChange, className }) =>
+  $('div', { className: cn(styles.itemQuantity, className) },
     $('button', {
       className: styles.itemControl,
       onClick: () => onChange(-1)
