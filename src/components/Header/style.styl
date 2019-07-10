@@ -19,25 +19,16 @@
   justify-content: space-between
   align-items: center;
 
-.navItem
-  font-size: 1.15rem
-  color: $color-dark-grey
-  text-decoration: none
-  transition: color .3s
-  &:not(:last-child)
-    margin-right: 2.65rem;
-  &:hover
-    color: $color-primary;
-
-.navItemIcon
-  padding-left .5rem
-
-.mainNav
-  padding-top .5rem;
-  display flex
-  align-items: center
-
 .account
   margin-left auto
   direction: block
-  
+
+@media (max-width: 1024px)
+  .logo
+    width 44px
+    overflow hidden
+
+@media (max-width: 800px)
+  .navItemsWrapper
+    order 1
+    width 3.5rem
