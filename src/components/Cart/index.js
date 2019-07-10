@@ -56,7 +56,6 @@ const Cart = ({
         maxDiscount,
         freeShippingValue,
         setAmount: value => setStoreItem('usedAccountAmount', value),
-      })
-    ))
+      })))
 
 export default withCartStore(Cart)

@@ -58,8 +58,7 @@ const Total = ({
       $('div', { className: styles.textWrapper },
         $('span', { className: cn(styles.label, 'green') }, 'На личный счёт вернется'),
         $('span', { className: cn(styles.value, 'green') }, formatMoney(totalPrice + goldBonus))),
-      $(SubmitButton, null, 'Оформить заказ')
-    )
+      $(SubmitButton, null, 'Оформить заказ'))
   )
 }
 

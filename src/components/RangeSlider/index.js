@@ -29,8 +29,7 @@ const RangeSlider = ({
           onChange
             ? onChange(e.target.value)
             : setValue(e.target.value)
-      })
-    )
+      }))
   )
 }
 
