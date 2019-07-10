@@ -1,5 +1,8 @@
 @import '../../variables'
 
+.cartItems
+  margin-bottom 2rem
+
 .cartInner 
   max-width: 768px
   padding: 0 1rem
@@ -8,7 +11,7 @@
 
 .cartHeader
   padding-top 4.5rem
-  padding-bottom 4rem
+  padding-bottom 1rem
   display: flex
   align-items: center
 
@@ -28,3 +31,7 @@
   color: $color-red
   background: none
   border: none
+
+@media (max-width: 800px)
+  .cartTitle
+    font-size: 1.85rem
