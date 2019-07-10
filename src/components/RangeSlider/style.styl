@@ -1,0 +1,49 @@
+@import '../../variables';
+
+range-thumb()
+  &::-webkit-slider-thumb
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    {block}
+
+  &::-moz-range-thumb
+    {block}
+
+  &::-ms-thumb
+    {block}
+    display: inline-block;
+    margin-top: 5px;
+
+.range
+  outline-width: 1px;
+  outline-color: #c6cdd8;
+  width: 100%;
+  background: transparent;
+  background-size: 30%;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  background-color: #eceff4;
+  background-image: linear-gradient($color-primary, $color-primary);
+  background-repeat: no-repeat;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 18px 0;
+
+  +range-thumb()
+    cursor ew-resize
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-image: url('../../assets/svg/slider-knob.svg');
+    background-size: 100%;
+
+  &::-ms-tooltip, &::-ms-ticks-after, &::-ms-ticks-before
+    display: none;
+
+.amounts
+  display flex
+  justify-content: space-between
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color-light-grey
