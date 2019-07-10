@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const autoprefixer = require('autoprefixer-stylus');
 
 module.exports = {
   module: {
@@ -15,11 +16,19 @@ module.exports = {
               modules: true,
             },
           },
-          'stylus-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              use: [
+                autoprefixer(),
+              ],
+            },
+          }
         ],
       },
       {
         test: /\.svg$/,
+        issuer: /\.jsx?$/,
         use: [
           {
             loader: 'babel-loader'
@@ -31,6 +40,11 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: [/\.svg$/],
+        issuer: [/\.css$/, /\.styl$/],
+        loader: 'url-loader'
       },
       {
         test: [/\.jpe?g$/, /\.png$/],
